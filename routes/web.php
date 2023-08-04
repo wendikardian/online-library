@@ -23,6 +23,18 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('Register screen');
 });
-Route::get('/greeting', function () {
-    echo 'hello world';
+
+Route::get('/books', function () {
+    echo 'Index';
+});
+Route::get('/books/detail', function () {
+    echo 'Detail Book';
+});
+
+
+Route::get('/second', function () {
+    $data = [
+        1, 2, 'three', ['james', 67, 4.5], 'five', null
+    ];
+    return $data;
 });

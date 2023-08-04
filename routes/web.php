@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// import name space from controller
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
@@ -64,9 +66,12 @@ Route::get('/second', function () {
 
 // THE URI MUST BE FIELD
 
-Route::get('/user/{id}', function ($id) {
-    return 'user with id ' . $id;
-});
+// Route::get('/user/{id}', function ($id) {
+//     return 'user with id ' . $id;
+// });
+
+// Using router with controller
+Route::get('/user/{id}', [UserController::class, 'show']);
 
 // optional parameters
 

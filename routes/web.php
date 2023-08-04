@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,10 +27,31 @@ Route::get('/register', function () {
 });
 
 Route::get('/books', function () {
-    echo 'Index';
+    $bookData = [
+        [
+            'id' => 1,
+            'name' => 'Learn PHP',
+        ],
+        [
+            'id' => 2,
+            'name' => 'Introduction to machine learning',
+        ],
+    ];
+    return $bookData;
 });
-Route::get('/books/detail', function () {
-    echo 'Detail Book';
+
+Route::get('/books/detail/{id}', function ($id) {
+    $bookData = [
+        [
+            'id' => 1,
+            'name' => 'Learn PHP',
+        ],
+        [
+            'id' => 2,
+            'name' => 'Introduction to machine learning',
+        ],
+    ];
+    return $bookData[$id]['name'];
 });
 
 
@@ -37,4 +60,22 @@ Route::get('/second', function () {
         1, 2, 'three', ['james', 67, 4.5], 'five', null
     ];
     return $data;
+});
+
+// THE URI MUST BE FIELD
+
+Route::get('/user/{id}', function ($id) {
+    return 'user with id ' . $id;
+});
+
+// optional parameters
+
+Route::get('/username/{name?}', function ($name = 'John') {
+    return 'user with name ' . $name;
+});
+
+// More complex parameters
+
+Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
+    return 'post with ' . $postId . ' comment ' . $commentId;
 });

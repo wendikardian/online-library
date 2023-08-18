@@ -69,6 +69,7 @@ Route::get('/layout', function () {
 
 Route::get('/books', [BookController::class, 'index'])->name('books');
 
+
 // Route::get('/books/detail/{id}', function ($id) {
 //     $bookData = [
 //         [

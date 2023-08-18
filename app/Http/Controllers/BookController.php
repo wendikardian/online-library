@@ -34,6 +34,7 @@ class BookController extends Controller
 
     public function detail($id)
     {
-        return view('detail', ["data" => $this->bookData[$id]]);
+        // return view('detail', ["data" => $this->bookData[$id]]);
+        return view('HomePage/detail', ["data" => $this->bookData[$id]]);
     }
 }

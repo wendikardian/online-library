@@ -18,22 +18,22 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
 
 
-Route::get('/', function () {
-    // return view('hello', [
-    //     'name' => 'James',
-    //     'age' => 25,
-    //     'citizenship' => 'EN',
-    //     'siblings' => ['Robert', 'Natalia']
-    // ]);
+// Route::get('/', function () {
+//     // return view('hello', [
+//     //     'name' => 'James',
+//     //     'age' => 25,
+//     //     'citizenship' => 'EN',
+//     //     'siblings' => ['Robert', 'Natalia']
+//     // ]);
 
-    // other options with 'with' Helper
-    // The code above and below will gave the same results
-    return view('hello')
-        ->with('name', 'James')
-        ->with('age', 25)
-        ->with('siblings', ['Robert', 'Natalia'])
-        ->with('citizenship', 'EN');
-});
+//     // other options with 'with' Helper
+//     // The code above and below will gave the same results
+//     return view('hello')
+//         ->with('name', 'James')
+//         ->with('age', 25)
+//         ->with('siblings', ['Robert', 'Natalia'])
+//         ->with('citizenship', 'EN');
+// });
 
 Route::get('/login', function () {
     return view('login screen');
@@ -45,6 +45,9 @@ Route::get('/register', function () {
 Route::get('/blade', function () {
     return view('blade_example');
 });
+
+// create route to '/' to controller BookController -> index
+Route::get('/', [BookController::class, 'index']);
 
 Route::get('/layout', function () {
     return view('layouts/child');

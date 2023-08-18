@@ -28,7 +28,8 @@ class BookController extends Controller
     public function index()
     {
         // return index view with bookData response
-        return view('index', ["data" => $this->bookData]);
+        // return view('index', ["data" => $this->bookData]);
+        return view('HomePage/index');
     }
 
     public function detail($id)

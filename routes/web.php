@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // import name space from controller
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CommunityController;
 
 
 // Route::get('/', function () {
@@ -53,21 +54,21 @@ Route::get('/layout', function () {
     return view('layouts/child');
 });
 
-// Route::get('/books', function () {
-//     $bookData = [
-//         [
-//             'id' => 1,
-//             'name' => 'Learn PHP',
-//         ],
-//         [
-//             'id' => 2,
-//             'name' => 'Introduction to machine learning',
-//         ],
-//     ];
-//     return $bookData;
-// });
+Route::get('/books', function () {
+    $bookData = [
+        [
+            'id' => 1,
+            'name' => 'Learn PHP',
+        ],
+        [
+            'id' => 2,
+            'name' => 'Introduction to machine learning',
+        ],
+    ];
+    return $bookData;
+});
 
-Route::get('/books', [BookController::class, 'index'])->name('books');
+Route::get('/community', [CommunityController::class, 'index'])->name('community');
 
 
 // Route::get('/books/detail/{id}', function ($id) {
@@ -83,6 +84,8 @@ Route::get('/books', [BookController::class, 'index'])->name('books');
 //     ];
 //     return $bookData[$id]['name'];
 // });
+
+Route::get('/books', [BookController::class, 'index'])->name('books');
 
 Route::get('/books/detail/{id}', [BookController::class, 'detail'])->name('detail-book');
 

@@ -8,6 +8,11 @@ class UserController extends Controller
 {
     public function show($id)
     {
-        return 'hi ! this is user with id = ' . $id;
+        return view('hello')
+        ->with('name', 'James')
+        ->with('age', 25)
+        ->with('siblings', ['Robert', 'Natalia'])
+        ->with('citizenship', 'EN')
+        ->with('user_id', $id);
     }
 }

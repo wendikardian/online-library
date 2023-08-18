@@ -15,10 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 // import name space from controller
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('hello', [
+    //     'name' => 'James',
+    //     'age' => 25,
+    //     'citizenship' => 'EN',
+    //     'siblings' => ['Robert', 'Natalia']
+    // ]);
+
+    // other options with 'with' Helper
+    // The code above and below will gave the same results
+    return view('hello')
+        ->with('name', 'James')
+        ->with('age', 25)
+        ->with('siblings', ['Robert', 'Natalia'])
+        ->with('citizenship', 'EN');
 });
 
 Route::get('/login', function () {
@@ -28,34 +42,45 @@ Route::get('/register', function () {
     return view('Register screen');
 });
 
-Route::get('/books', function () {
-    $bookData = [
-        [
-            'id' => 1,
-            'name' => 'Learn PHP',
-        ],
-        [
-            'id' => 2,
-            'name' => 'Introduction to machine learning',
-        ],
-    ];
-    return $bookData;
+Route::get('/blade', function () {
+    return view('blade_example');
 });
 
-Route::get('/books/detail/{id}', function ($id) {
-    $bookData = [
-        [
-            'id' => 1,
-            'name' => 'Learn PHP',
-        ],
-        [
-            'id' => 2,
-            'name' => 'Introduction to machine learning',
-        ],
-    ];
-    return $bookData[$id]['name'];
+Route::get('/layout', function () {
+    return view('layouts/child');
 });
 
+// Route::get('/books', function () {
+//     $bookData = [
+//         [
+//             'id' => 1,
+//             'name' => 'Learn PHP',
+//         ],
+//         [
+//             'id' => 2,
+//             'name' => 'Introduction to machine learning',
+//         ],
+//     ];
+//     return $bookData;
+// });
+
+Route::get('/books', [BookController::class, 'index'])->name('books');
+
+// Route::get('/books/detail/{id}', function ($id) {
+//     $bookData = [
+//         [
+//             'id' => 1,
+//             'name' => 'Learn PHP',
+//         ],
+//         [
+//             'id' => 2,
+//             'name' => 'Introduction to machine learning',
+//         ],
+//     ];
+//     return $bookData[$id]['name'];
+// });
+
+Route::get('/books/detail/{id}', [BookController::class, 'detail'])->name('detail-book');
 
 Route::get('/second', function () {
     $data = [
@@ -71,7 +96,7 @@ Route::get('/second', function () {
 // });
 
 // Using router with controller
-Route::get('/user/{id}', [UserController::class, 'show']);
+Route::get('/user/{id}', [UserController::class, 'show'])->name('detail-user');
 
 // optional parameters
 

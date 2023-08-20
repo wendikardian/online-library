@@ -14,7 +14,9 @@
                 <p>By : {{$book['author']}}</p>
                 <!-- limit desc only max 50 words -->
                 <p>{{Str::limit($book['desc'], 250)}}</p>
-                <div class="text-center"><a href="./detail-item.html" class="btn btn-default" role="button">Show Detail</a></div>
+                <!-- change the href into detail-book route and send the id of the book  -->
+                <div class="text-center"><a href="{{route('detail-book', ['id' => $book['id']])}}" class="btn btn-default" role="button">Show Detail</a></div>
+
             </div>
         </div>
     </div>

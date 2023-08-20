@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+// import factory seeder
+// use Database\Factories\FlightFactory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +20,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        // $this->call([
+        //     FlightSeeder::class,
+
+        // ]);
+
+        $this->call([
+            BookSeeder::class,
+        ]);
     }
 }

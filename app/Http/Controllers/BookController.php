@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// import model Books
+use App\Models\Books;
 
 class BookController extends Controller
 {
@@ -25,11 +27,13 @@ class BookController extends Controller
         ]
     ];
     // create method called index that will return index view
+
     public function index()
     {
         // return index view with bookData response
         // return view('index', ["data" => $this->bookData]);
-        return view('HomePage/index')->with('bookData', $this->bookData);
+        $books = Books::all();
+        return view('HomePage/index')->with('bookData', $books);
     }
 
     public function detail($id)

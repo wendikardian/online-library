@@ -10,8 +10,10 @@ class FlightController extends Controller
 {
     public function index()
     {
+
         // Get all from model Flight;
         $flights = Flight::all();
+        $flights = Flight::paginate(10);
         return view('flight')->with('flights', $flights);
     }
 }

@@ -7,7 +7,7 @@ body {
 }
 
 #center-content {
-    padding: 22px 0;    
+    padding: 22px 0;
 }
 
 .h-link {
@@ -146,3 +146,9 @@ body {
 .pl-50 {
     padding-left: 50px;
 }
+
+.thumbnail{
+    height: 500px;
+}
+
+

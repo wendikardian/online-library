@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
     <style>
-        .container{
+        .container {
             display: flex;
             flex-wrap: wrap;
         }
-        .box{
+
+        .box {
             width: 300px;
             border: 1px solid black;
             margin: 10px;
@@ -37,7 +39,12 @@
             <hr>
         </div>
         @endforeach
+
     </div>
+    <br>
+        <div class="d-flex">
+            {{ $flights->links() }}
+        </div>
 </body>
 
 </html>

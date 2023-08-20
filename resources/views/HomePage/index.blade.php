@@ -5,92 +5,20 @@
 @section('content')
 <div class="row">
     <!-- first item -->
-    <div class="col-sm-6 col-md-3">
+    @foreach ($bookData as $book)
+    <div class="col-sm-6 col-md-3 card-book">
         <div class="thumbnail">
-            <img src="https://covers.openlibrary.org/b/id/13316297-L.jpg" alt="..." width="250px">
+            <img src="{{$book['image_path']}}" alt="..." width="250px" height="200">
             <div class="caption">
-                <h3>Books Title</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima quasi a quam quisquam temporibus, tenetur pariatur quod tempore reprehenderit debitis distinctio possimus voluptas sed. Error, quasi! Ex ipsam dignissimos ipsum?</p>
+                <h3>{{$book['title']}}</h3>
+                <p>By : {{$book['author']}}</p>
+                <!-- limit desc only max 50 words -->
+                <p>{{Str::limit($book['desc'], 250)}}</p>
                 <div class="text-center"><a href="./detail-item.html" class="btn btn-default" role="button">Show Detail</a></div>
             </div>
         </div>
     </div>
-    <!-- second item -->
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <img src="https://covers.openlibrary.org/b/id/13316297-L.jpg" alt="..." width="250px">
-            <div class="caption">
-                <h3>Books Title</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima quasi a quam quisquam temporibus, tenetur pariatur quod tempore reprehenderit debitis distinctio possimus voluptas sed. Error, quasi! Ex ipsam dignissimos ipsum?</p>
-                <div class="text-center"><a href="#" class="btn btn-default" role="button">Show Detail</a></div>
-            </div>
-        </div>
-    </div>
-    <!-- third item -->
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <img src="https://covers.openlibrary.org/b/id/13316297-L.jpg" alt="..." width="250px">
-            <div class="caption">
-                <h3>Books Title</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima quasi a quam quisquam temporibus, tenetur pariatur quod tempore reprehenderit debitis distinctio possimus voluptas sed. Error, quasi! Ex ipsam dignissimos ipsum?</p>
-                <div class="text-center"><a href="#" class="btn btn-default" role="button">Show Detail</a></div>
-            </div>
-        </div>
-    </div>
-    <!-- forth item -->
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <img src="https://covers.openlibrary.org/b/id/13316297-L.jpg" alt="..." width="250px">
-            <div class="caption">
-                <h3>Books Title</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima quasi a quam quisquam temporibus, tenetur pariatur quod tempore reprehenderit debitis distinctio possimus voluptas sed. Error, quasi! Ex ipsam dignissimos ipsum?</p>
-                <div class="text-center"><a href="#" class="btn btn-default" role="button">Show Detail</a></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- second row of cards -->
-<div class="row">
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <img src="https://covers.openlibrary.org/b/id/13316297-L.jpg" alt="..." width="250px">
-            <div class="caption">
-                <h3>Books Title</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima quasi a quam quisquam temporibus, tenetur pariatur quod tempore reprehenderit debitis distinctio possimus voluptas sed. Error, quasi! Ex ipsam dignissimos ipsum?</p>
-                <div class="text-center"><a href="#" class="btn btn-default" role="button">Show Detail</a></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <img src="https://covers.openlibrary.org/b/id/13316297-L.jpg" alt="..." width="250px">
-            <div class="caption">
-                <h3>Books Title</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima quasi a quam quisquam temporibus, tenetur pariatur quod tempore reprehenderit debitis distinctio possimus voluptas sed. Error, quasi! Ex ipsam dignissimos ipsum?</p>
-                <div class="text-center"><a href="#" class="btn btn-default" role="button">Show Detail</a></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <img src="https://covers.openlibrary.org/b/id/13316297-L.jpg" alt="..." width="250px">
-            <div class="caption">
-                <h3>Books Title</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima quasi a quam quisquam temporibus, tenetur pariatur quod tempore reprehenderit debitis distinctio possimus voluptas sed. Error, quasi! Ex ipsam dignissimos ipsum?</p>
-                <div class="text-center"><a href="#" class="btn btn-default" role="button">Show Detail</a></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <img src="https://covers.openlibrary.org/b/id/13316297-L.jpg" alt="..." width="250px">
-            <div class="caption">
-                <h3>Books Title</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima quasi a quam quisquam temporibus, tenetur pariatur quod tempore reprehenderit debitis distinctio possimus voluptas sed. Error, quasi! Ex ipsam dignissimos ipsum?</p>
-                <div class="text-center"><a href="#" class="btn btn-default" role="button">Show Detail</a></div>
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 @endsection
 

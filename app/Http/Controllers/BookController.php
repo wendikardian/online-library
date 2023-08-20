@@ -33,6 +33,8 @@ class BookController extends Controller
         // return index view with bookData response
         // return view('index', ["data" => $this->bookData]);
         $books = Books::all();
+        // add pagination 10 data per page
+        $books = Books::paginate(10);
         return view('HomePage/index')->with('bookData', $books);
     }
 

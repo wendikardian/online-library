@@ -24,7 +24,28 @@
 
 
 @section('pagination')
+
+<!-- add some custome pagination style -->
 <div class="text-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                <a href="{{$bookData->previousPageUrl()}}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for ($i = 1; $i <= $bookData->lastPage(); $i++)
+                <li><a href="{{$bookData->url($i)}}">{{$i}}</a></li>
+                @endfor
+                <li>
+                    <a href="{{$bookData->nextPageUrl()}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+        </ul>
+    </nav>
+</div>
+<!-- <div class="text-center">
     <nav aria-label="Page navigation">
         <ul class="pagination">
             <li>
@@ -44,5 +65,7 @@
             </li>
         </ul>
     </nav>
-</div>
+</div>  -->
+<!-- change the  pagination above based data that share in the controller -->
+
 @endsection

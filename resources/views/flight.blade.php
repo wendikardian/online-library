@@ -35,16 +35,17 @@
             <p>Passengers: {{ $flight->passengers }}</p>
             <p>Amount: {{ $flight->amount }}</p>
             <p>Name: {{ $flight->name }}</p>
-            <p>Confirmed: {{ $flight->confirmed }}</p>
+            <!-- add some operational if confirmed 1 create span with green and if 0 red span  using bootstrap -->
+            <p>Confirmed: <span class="badge badge-{{ $flight->confirmed ? 'success' : 'danger' }}">{{ $flight->confirmed ? 'Confirmed' : 'Not Confirmed' }}</span></p>
             <hr>
         </div>
         @endforeach
 
     </div>
     <br>
-        <div class="d-flex">
-            {{ $flights->links() }}
-        </div>
+    <div class="d-flex">
+        {{ $flights->links() }}
+    </div>
 </body>
 
 </html>

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\FlightController;
 
 
 // Route::get('/', function () {
@@ -36,6 +37,7 @@ use App\Http\Controllers\CommunityController;
 //         ->with('citizenship', 'EN');
 // });
 
+Route::get('/collection', [UserController::class, 'collection']);
 Route::get('/login', function () {
     return view('login screen');
 });
@@ -46,6 +48,10 @@ Route::get('/register', function () {
 Route::get('/blade', function () {
     return view('blade_example');
 });
+
+Route::get('/flight', [FlightController::class, 'index']);
+
+
 
 // create route to '/' to controller BookController -> index
 Route::get('/', [BookController::class, 'index']);

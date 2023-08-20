@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box{
+            width: 300px;
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Foreach data flight with props id, deps, passengers, and amount -->
+        @foreach ($flights as $flight)
+        <div class="box">
+
+
+            <p>Flight ID: {{ $flight->id }}</p>
+            <p>Departure: {{ $flight->deps }}</p>
+            <p>Passengers: {{ $flight->passengers }}</p>
+            <p>Amount: {{ $flight->amount }}</p>
+            <p>Name: {{ $flight->name }}</p>
+            <p>Confirmed: {{ $flight->confirmed }}</p>
+            <hr>
+        </div>
+        @endforeach
+    </div>
+</body>
+
+</html>

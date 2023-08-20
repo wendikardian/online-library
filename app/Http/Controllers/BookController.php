@@ -29,7 +29,7 @@ class BookController extends Controller
     {
         // return index view with bookData response
         // return view('index', ["data" => $this->bookData]);
-        return view('HomePage/index');
+        return view('HomePage/index')->with('bookData', $this->bookData);
     }
 
     public function detail($id)

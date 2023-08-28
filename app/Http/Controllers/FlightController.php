@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // import Flight Models
 use App\Models\Flight;
+use App\Http\Requests\FlightPostRequest;
 
 class FlightController extends Controller
 {
@@ -22,7 +23,7 @@ class FlightController extends Controller
         return view('form');
     }
 
-    public function store(Request $request)
+    public function store(FlightPostRequest $request)
     {
 
         // To save it to the databases
@@ -33,10 +34,23 @@ class FlightController extends Controller
         // $flight->save();
         // return redirect()->route('flights.index');
         // fillable to Flight
-        $flight = new Flight;
-        $flight->create($request->all());
-        return redirect('/flights');
+        // add validate to the request data
 
+        // Manual without request
+        // $validate = $request->validate([
+        //     'departure' => 'required|numeric|min:75|max:150',
+        //     'passenger' => 'required'
+        // ]);
+
+        // with request
+        $validate = $request->validated();
+
+        $flight = new Flight;
+        // $flight->create($request->all());
+        $flight->create($validate);
+        return redirect()->route('flights.index');
+
+        // If the users does not require all of the validation rules, it will return 403 error (unauthorized)
 
         // To get the data and then display it
 

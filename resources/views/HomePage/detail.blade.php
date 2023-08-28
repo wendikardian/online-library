@@ -15,7 +15,6 @@
                             <!-- <a href="#" class="btn btn-default" role="button">Buy</a> -->
                         </div>
                     </div>
-
                     <div class="col-sm-6 col-md-8">
                         <h2><b>{{$book['title']}}</b></h2>
                         <p><small>by</small> <a href="#" class="h-link"> {{$book['author']}} </a></p>

@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         //
+// Create a schema flights
+
         Schema::create('flights', function (Blueprint $table) {
             // check if tables has column departures
-            if (Schema::hasColumn('flights', 'departure')) {
-                // $table->dropColumn('departure');
-            } else {
-                $table->dateTime('departure')->after('id');
-            }
-            $table->integer('passengers')->nullable();
+            // if (Schema::hasColumn('flights', 'departure')) {
+            //     // $table->dropColumn('departure');
+            // } else {
+            // }
+            $table->id();
+            $table->integer('passengers');
+            $table->dateTime('departure');
             // rename column departures into deps
             $table->renameColumn('departure', 'deps');
             // add another column called amount with float name with char confirmed with boolean

@@ -122,3 +122,27 @@ Route::get('/username/{name?}', function ($name = 'John') {
 Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
     return 'post with ' . $postId . ' comment ' . $commentId;
 });
+
+
+// Example of verb route for Flights
+
+// Refer to 'index' action
+Route::get('/flights', [FlightController::class, 'index'])->name('flights.index');
+
+// Refer to 'create' action
+Route::get('/flights/create', [FlightController::class, 'create'])->name('flights.create');
+
+// Refer to 'store' action
+Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
+
+// Refer to 'show' action
+Route::get('/flights/{flight}', [FlightController::class, 'show'])->name('flights.show');
+
+// Refer to 'edit' action
+Route::get('/flights/{flight}/edit', [FlightController::class, 'edit'])->name('flights.edit');
+
+// Refer to 'update' action
+Route::put('/flights/{flight}', [FlightController::class, 'update'])->name('flights.update');
+
+// Refer to 'destroy' action
+Route::delete('/flights/{flight}', [FlightController::class, 'destroy'])->name('flights.destroy');

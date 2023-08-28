@@ -8,9 +8,10 @@
     <h1>Add some book</h1>
 
     <div class="box-form">
-        <form method="POST" action="{{ route('book.store') }}">
+        <form method="POST" action="{{ route('book.update', ['id' => $book['id']]) }}">
             <!-- create input for isbn, title, author, image_path, publisher, category, page, language, publish_date, subjects, desc -->
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <label for="isbn">ISBN</label>
                 <input type="text"

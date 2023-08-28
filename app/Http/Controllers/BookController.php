@@ -34,8 +34,10 @@ class BookController extends Controller
         // return index view with bookData response
         // return view('index', ["data" => $this->bookData]);
         $books = Books::all();
+        // change order into DESC
+        // $books = Books::orderBy('id', 'ASC')->get();
         // add pagination 10 data per page
-        $books = Books::paginate(10);
+        $books = Books::paginate(12);
         return view('HomePage/index')->with('bookData', $books);
     }
 
@@ -86,5 +88,25 @@ class BookController extends Controller
 
         $books = Books::find($id);
         return view('HomePage/edit', ["book" => $books]);
+    }
+
+    // create method update
+    public function update(Request $request, int $id)
+    {
+        $books = Books::find($id);
+        // dd([$request, $books]);
+        $books->isbn = $request->isbn;
+        $books->title = $request->title;
+        $books->author = $request->author;
+        $books->image_path = $request->image_path;
+        $books->publisher = $request->publisher;
+        $books->category = $request->category;
+        $books->page = $request->page;
+        $books->language = $request->language;
+        $books->publish_date = $request->publish_date;
+        $books->subjects = $request->subjects;
+        $books->desc = $request->desc;
+        $books->save();
+        return redirect()->route('book.show', $id);
     }
 }

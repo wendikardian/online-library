@@ -162,3 +162,7 @@ Route::put('/flights/{flight}', [FlightController::class, 'update'])->name('flig
 
 // Refer to 'destroy' action
 Route::delete('/flights/{flight}', [FlightController::class, 'destroy'])->name('flights.destroy');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

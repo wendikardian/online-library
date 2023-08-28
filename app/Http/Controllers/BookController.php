@@ -47,6 +47,10 @@ class BookController extends Controller
         return view('HomePage/detail', ["book" => $books]);
     }
 
+    public function create(){
+        return view('HomePage/create');
+    }
+
     // public function store(Request $request)
     public function store(BookPostRequest $request)
     {
@@ -66,8 +70,10 @@ class BookController extends Controller
         // $books->desc = $request->desc;
 
         $validated = $request->validated();
+        // check error validated
+        // dd($validated);
         $books->create($validated);
-        $books->save();
+        // $books->save();
         return redirect()->route('books.index');
 
         // return redirect('/books');

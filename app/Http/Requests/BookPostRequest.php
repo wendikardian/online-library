@@ -11,7 +11,7 @@ class BookPostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,8 @@ class BookPostRequest extends FormRequest
     {
         // create validation for isbn, title, author, image_path, publisher, category, page, language, publish_date, subjects, desc
         return [
-            'isbn' => 'required|max_length:255',
-            'title' => 'required|max_length:100',
+            'isbn' => 'required',
+            'title' => 'required',
             'author' => 'required',
             'image_path' => 'required',
             'publisher' => 'required',

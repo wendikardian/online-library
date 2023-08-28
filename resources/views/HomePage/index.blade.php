@@ -4,6 +4,9 @@
 
 @section('content')
 <div class="row">
+    <!-- add button to create a new book -->
+    <div class="text-center mb-50 "><a href="{{route('book.create')}}" class="btn btn-default" role="button">Create New Book</a></div>
+
     <!-- first item -->
     @foreach ($bookData as $book)
     <div class="col-sm-6 col-md-3 card-book">

@@ -29,6 +29,8 @@
                             <p class="h-link" id="read-btn" onclick="showCompleteText()">Read more</p>
                             <p>ISBN <b>{{$book['isbn']}}</b></p>
                         </div>
+                           <!-- add button to edit and delete -->
+
                     </div>
                 </div>
             </div>

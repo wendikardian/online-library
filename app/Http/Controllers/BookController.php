@@ -109,4 +109,18 @@ class BookController extends Controller
         $books->save();
         return redirect()->route('book.show', $id);
     }
+
+    public function deleteConfirm(int $id)
+    {
+        $books = Books::find($id);
+        return view('HomePage/confirm', ["book" => $books]);
+    }
+
+    // Create destroy method for book
+    public function destroy(int $id)
+    {
+        $books = Books::find($id);
+        $books->delete();
+        return redirect()->route('books.index');
+    }
 }

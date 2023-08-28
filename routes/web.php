@@ -94,6 +94,7 @@ Route::get('/community', [CommunityController::class, 'index'])->name('community
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 
 // Route::get('/books/detail/{id}', [BookController::class, 'detail'])->name('detail-book');
+Route::get('/books/{id}/delete', [BookController::class, 'deleteConfirm'])->name('book_confirm_delete');
 
 // create another action like 'create', 'store', 'show', 'edit', 'update', 'destroy' for BookController
 Route::get('/books/create', [BookController::class, 'create'])->name('book.create');
@@ -107,7 +108,7 @@ Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('book.edit
 Route::put('/books/{id}', [BookController::class, 'update'])->name('book.update');
 // to destroy
 Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('book.destroy');
-
+// add route to book_delete_confirm
 
 
 // Route::get('/second', function () {

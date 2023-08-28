@@ -47,7 +47,8 @@ class BookController extends Controller
         return view('HomePage/detail', ["book" => $books]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('HomePage/create');
     }
 
@@ -77,5 +78,13 @@ class BookController extends Controller
         return redirect()->route('books.index');
 
         // return redirect('/books');
+    }
+
+
+    public function edit(int $id)
+    {
+
+        $books = Books::find($id);
+        return view('HomePage/edit', ["book" => $books]);
     }
 }

@@ -29,7 +29,12 @@
                             <p class="h-link" id="read-btn" onclick="showCompleteText()">Read more</p>
                             <p>ISBN <b>{{$book['isbn']}}</b></p>
                         </div>
-                           <!-- add button to edit and delete -->
+                        <!-- add button to edit and delete -->
+                        <div class="text-center">
+                            <a href="{{route('book.edit', $book['id'])}}" class="btn btn-default mt-10 mb-10" role="button">Edit</a>
+                            <a href="{{route('book.destroy', $book['id'])}}" class="btn btn-default mt-10 mb-10" role="button">Delete</a>
+
+                        </div>
 
                     </div>
                 </div>

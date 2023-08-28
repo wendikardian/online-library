@@ -6,7 +6,12 @@
 <div class="row">
     <!-- add button to create a new book -->
     <div class="text-center mb-50 "><a href="{{route('book.create')}}" class="btn btn-default" role="button">Create New Book</a></div>
-
+    <!-- check if there was sessions status, if there, add some alert success -->
+    @if (session('status'))
+    <div class="alert alert-success" role="alert">
+        {{session('status')}}
+    </div>
+    @endif
     <!-- first item -->
     @foreach ($bookData as $book)
     <div class="col-sm-6 col-md-3 card-book">

@@ -3,6 +3,11 @@
 
 
 @section('content')
+@if (session('status'))
+<div class="alert alert-success" role="alert">
+    {{session('status')}}
+</div>
+@endif
 <div class="row">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -16,6 +21,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-8">
+
                         <h2><b>{{$book['title']}}</b></h2>
                         <p><small>by</small> <a href="#" class="h-link"> {{$book['author']}} </a></p>
                         <div class="pt-20">

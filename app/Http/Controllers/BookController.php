@@ -96,7 +96,13 @@ class BookController extends Controller
         // dd($validated);
         $books->create($validated);
         // $books->save();
-        return redirect()->route('books.index');
+        // redirect with alert status data saved
+        return redirect()->route('books.index')
+            ->with(
+                'status',
+                'Data successfully added.'
+            );
+
 
         // return redirect('/books');
     }
@@ -110,23 +116,32 @@ class BookController extends Controller
     }
 
     // create method update
-    public function update(Request $request, int $id)
+    public function update(BookPostRequest $request, int $id)
     {
         $books = Books::find($id);
         // dd([$request, $books]);
-        $books->isbn = $request->isbn;
-        $books->title = $request->title;
-        $books->author = $request->author;
-        $books->image_path = $request->image_path;
-        $books->publisher = $request->publisher;
-        $books->category = $request->category;
-        $books->page = $request->page;
-        $books->language = $request->language;
-        $books->publish_date = $request->publish_date;
-        $books->subjects = $request->subjects;
-        $books->desc = $request->desc;
-        $books->save();
-        return redirect()->route('book.show', $id);
+        // update books with validation
+        $validated = $request->validated();
+        $books->update($validated);
+
+        // $books->isbn = $request->isbn;
+        // $books->title = $request->title;
+        // $books->author = $request->author;
+        // $books->image_path = $request->image_path;
+        // $books->publisher = $request->publisher;
+        // $books->category = $request->category;
+        // $books->page = $request->page;
+        // $books->language = $request->language;
+        // $books->publish_date = $request->publish_date;
+        // $books->subjects = $request->subjects;
+        // $books->desc = $request->desc;
+        // $books->save();
+        // add some alert if it success
+        return redirect()->route('book.show', $id)
+        ->with(
+            'status',
+            'Data successfully updated.'
+        );
     }
 
     public function deleteConfirm(int $id)
@@ -140,6 +155,9 @@ class BookController extends Controller
     {
         $books = Books::find($id);
         $books->delete();
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with(
+            'status',
+            'Data has been deleted'
+        );
     }
 }

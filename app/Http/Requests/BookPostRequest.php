@@ -22,8 +22,9 @@ class BookPostRequest extends FormRequest
     public function rules(): array
     {
         // create validation for isbn, title, author, image_path, publisher, category, page, language, publish_date, subjects, desc
+        // only character and number and space
         return [
-            'isbn' => 'required',
+            'isbn' => 'required|regex:/^[a-zA-Z0-9 ]+$/',
             'title' => 'required',
             'author' => 'required',
             'image_path' => 'required',

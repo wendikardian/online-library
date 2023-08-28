@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // import model Books
 use App\Models\Books;
+use App\Http\Requests\BookPostRequest;
 
 class BookController extends Controller
 {
@@ -46,23 +47,29 @@ class BookController extends Controller
         return view('HomePage/detail', ["book" => $books]);
     }
 
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store(BookPostRequest $request)
     {
         // add data to databases using fillable
         $books = new Books;
         // filed isbn, title, author, image_path, publisher, category, page, language, publish_date, subjects, desc
-        $books->isbn = $request->isbn;
-        $books->title = $request->title;
-        $books->author = $request->author;
-        $books->image_path = $request->image_path;
-        $books->publisher = $request->publisher;
-        $books->category = $request->category;
-        $books->page = $request->page;
-        $books->language = $request->language;
-        $books->publish_date = $request->publish_date;
-        $books->subjects = $request->subjects;
-        $books->desc = $request->desc;
+        // $books->isbn = $request->isbn;
+        // $books->title = $request->title;
+        // $books->author = $request->author;
+        // $books->image_path = $request->image_path;
+        // $books->publisher = $request->publisher;
+        // $books->category = $request->category;
+        // $books->page = $request->page;
+        // $books->language = $request->language;
+        // $books->publish_date = $request->publish_date;
+        // $books->subjects = $request->subjects;
+        // $books->desc = $request->desc;
+
+        $validated = $request->validated();
+        $books->create($validated);
         $books->save();
-        return redirect('/books');
+        return redirect()->route('books.index');
+
+        // return redirect('/books');
     }
 }

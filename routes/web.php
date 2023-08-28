@@ -91,7 +91,7 @@ Route::get('/community', [CommunityController::class, 'index'])->name('community
 //     return $bookData[$id]['name'];
 // });
 
-Route::get('/books', [BookController::class, 'index'])->name('books');
+Route::get('/books', [BookController::class, 'index'])->name('books.index');
 
 // Route::get('/books/detail/{id}', [BookController::class, 'detail'])->name('detail-book');
 

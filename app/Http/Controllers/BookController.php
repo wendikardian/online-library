@@ -29,15 +29,34 @@ class BookController extends Controller
     ];
     // create method called index that will return index view
 
-    public function index()
+    public function index(Request $request)
     {
         // return index view with bookData response
         // return view('index', ["data" => $this->bookData]);
         $books = Books::all();
+
+        // if has search
+        if ($request->has('search')) {
+            // get search value
+            $search = $request->search;
+            // search by title or author or publisher or category or subjects or desc
+            $books = Books::where('title', 'LIKE', '%' . $search . '%')
+                ->orWhere('author', 'LIKE', '%' . $search . '%')
+                ->orWhere('publisher', 'LIKE', '%' . $search . '%')
+                ->orWhere('category', 'LIKE', '%' . $search . '%')
+                ->orWhere('subjects', 'LIKE', '%' . $search . '%')
+                ->orWhere('desc', 'LIKE', '%' . $search . '%')
+                ->paginate(12);
+            // $books = Books::where('title', 'LIKE', '%' . $search . '%')->paginate(12);
+        } else {
+            // get all data
+            $books = Books::paginate(12);
+        }
+
         // change order into DESC
         // $books = Books::orderBy('id', 'ASC')->get();
         // add pagination 10 data per page
-        $books = Books::paginate(12);
+        // $books = Books::paginate(12);
         return view('HomePage/index')->with('bookData', $books);
     }
 

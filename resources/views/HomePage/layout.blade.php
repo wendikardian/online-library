@@ -30,14 +30,16 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{route('books.index')}}">Home</a></li>
                     </ul>
-                    <form class="navbar-form navbar-left">
+                    <form class="navbar-form navbar-left" action="{{route('books.index')}}" method="POST">
+                        @method('get')
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Search" name="search" >
                             <div class="input-group-btn">
                                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                             </div>
                         </div>
-                        <!-- <button type="submit" class="btn btn-default"></button> -->
+                    </form>
+                    <!-- <button type="submit" class="btn btn-default"></button> -->
                     </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="./login.html">Login</a></li>

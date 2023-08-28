@@ -40,7 +40,9 @@
                 </a>
             </li>
             @for ($i = 1; $i <= $bookData->lastPage(); $i++)
-                <li><a href="{{$bookData->url($i)}}">{{$i}}</a></li>
+                <!-- <li><a href="{{$bookData->url($i)}}">{{$i}}</a></li> -->
+                <!-- fix pagination based on search keyword also -->
+                <li><a href="{{$bookData->appends(['search' => request()->search])->url($i)}}">{{$i}}</a></li>
                 @endfor
                 <li>
                     <a href="{{$bookData->nextPageUrl()}}" aria-label="Next">

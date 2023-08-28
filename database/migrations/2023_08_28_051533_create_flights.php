@@ -21,14 +21,15 @@ return new class extends Migration
             // } else {
             // }
             $table->id();
+            $table->timestamps();
             $table->integer('passengers');
             $table->dateTime('departure');
             // rename column departures into deps
-            $table->renameColumn('departure', 'deps');
+            // $table->renameColumn('departure', 'deps');
             // add another column called amount with float name with char confirmed with boolean
-            $table->float('amount', 8, 2);
-            $table->char('name', 100);
-            $table->boolean('confirmed');
+            // $table->float('amount', 8, 2);
+            // $table->char('name', 100);
+            // $table->boolean('confirmed');
         });
     }
 

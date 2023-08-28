@@ -38,11 +38,31 @@ class BookController extends Controller
         return view('HomePage/index')->with('bookData', $books);
     }
 
-    public function detail($id)
+    public function show($id)
     {
         // return view('detail', ["data" => $this->bookData[$id]]);
         // get books by id
         $books = Books::find($id);
         return view('HomePage/detail', ["book" => $books]);
+    }
+
+    public function store(Request $request)
+    {
+        // add data to databases using fillable
+        $books = new Books;
+        // filed isbn, title, author, image_path, publisher, category, page, language, publish_date, subjects, desc
+        $books->isbn = $request->isbn;
+        $books->title = $request->title;
+        $books->author = $request->author;
+        $books->image_path = $request->image_path;
+        $books->publisher = $request->publisher;
+        $books->category = $request->category;
+        $books->page = $request->page;
+        $books->language = $request->language;
+        $books->publish_date = $request->publish_date;
+        $books->subjects = $request->subjects;
+        $books->desc = $request->desc;
+        $books->save();
+        return redirect('/books');
     }
 }

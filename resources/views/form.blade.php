@@ -16,7 +16,7 @@
         <br>
         <br>
         <label for="passenger">Passenger:</label>
-        <input type="number" name="passenger" id="passenger">
+        <input type="number" name="passengers" id="passengers">
         <br>
         <br>
         <input type="submit" value="submit">

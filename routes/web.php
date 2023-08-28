@@ -93,14 +93,29 @@ Route::get('/community', [CommunityController::class, 'index'])->name('community
 
 Route::get('/books', [BookController::class, 'index'])->name('books');
 
-Route::get('/books/detail/{id}', [BookController::class, 'detail'])->name('detail-book');
+// Route::get('/books/detail/{id}', [BookController::class, 'detail'])->name('detail-book');
 
-Route::get('/second', function () {
-    $data = [
-        1, 2, 'three', ['james', 67, 4.5], 'five', null
-    ];
-    return $data;
-});
+// create another action like 'create', 'store', 'show', 'edit', 'update', 'destroy' for BookController
+Route::get('/books/create', [BookController::class, 'create'])->name('book.create');
+// to store
+Route::post('/books', [BookController::class, 'store'])->name('book.store');
+// to show
+Route::get('/books/{id}', [BookController::class, 'show'])->name('book.show');
+// to edit
+Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
+// to update
+Route::put('/books/{id}', [BookController::class, 'update'])->name('book.update');
+// to destroy
+Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+
+
+
+// Route::get('/second', function () {
+//     $data = [
+//         1, 2, 'three', ['james', 67, 4.5], 'five', null
+//     ];
+//     return $data;
+// });
 
 // THE URI MUST BE FIELD
 

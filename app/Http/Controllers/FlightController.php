@@ -32,13 +32,18 @@ class FlightController extends Controller
         // $flight->passenger = $request->passenger;
         // $flight->save();
         // return redirect()->route('flights.index');
+        // fillable to Flight
+        $flight = new Flight;
+        $flight->create($request->all());
+        return redirect('/flights');
+
 
         // To get the data and then display it
 
-        $passenger = $request->passenger;
-        $departure = $request->departure;
-        // echo data
-        dd([$passenger, $departure]);
+        // $passenger = $request->passenger;
+        // $departure = $request->departure;
+        // // echo data
+        // dd([$passenger, $departure]);
         // return view('hello');
     }
     public function show(Flight $flight)

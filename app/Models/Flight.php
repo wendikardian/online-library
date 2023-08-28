@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flight extends Model
 {
+    protected $fillable = ['passengers', 'departure'];
+    protected $guarded = ['id'];
     use HasFactory;
 }

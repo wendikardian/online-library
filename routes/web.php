@@ -21,6 +21,10 @@ use App\Http\Controllers\FlightController;
 
 // import controllert from auth login
 use App\Http\Controllers\Auth\LoginController;
+// import Auth
+use Illuminate\Support\Facades\Auth;
+// import BookControllerAPI
+// use App\Http\Controllers\api\BookControllerAPI;
 
 // Route::get('/', function () {
 //     // return view('hello', [
@@ -93,6 +97,8 @@ Route::get('/community', [CommunityController::class, 'index'])->name('community
 // });
 
 // Route::get('/login', [LoginController::class])->name('login');
+
+
 
 
 Route::get('/', [BookController::class, 'index']);
@@ -170,6 +176,7 @@ Route::put('/flights/{flight}', [FlightController::class, 'update'])->name('flig
 
 // Refer to 'destroy' action
 Route::delete('/flights/{flight}', [FlightController::class, 'destroy'])->name('flights.destroy');
+
 
 
 Auth::routes();

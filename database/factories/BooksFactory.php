@@ -35,7 +35,7 @@ class BooksFactory extends Factory
         return [
             'isbn' => $this->faker->isbn13(),
             'title' => $this->faker->sentence(5),
-            'author' => $this->faker->name(),
+            'author_id' => $this->faker->numberBetween(1, 10),
             'image_path' => $this->faker->imageUrl(),
             'publisher' => $this->faker->company(),
             'category' => $this->faker->word(),
@@ -44,6 +44,7 @@ class BooksFactory extends Factory
             'publish_date' => $this->faker->dateTimeBetween('now', 'now'),
             'subjects' => $this->faker->word(),
             'desc' => $this->faker->paragraph(5),
+            'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

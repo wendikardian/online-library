@@ -29,7 +29,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('isbn', 13);
             $table->string('title', 250);
-            $table->string('author', 150);
+            $table->unsignedBigInteger('author_id');
             $table->string('image_path', 100);
             $table->string('publisher', 50);
             $table->string('category', 50);
@@ -38,6 +38,8 @@ return new class extends Migration
             $table->timestamp('publish_date');
             $table->string('subjects', 50);
             $table->text('desc');
+            // add user_id
+            $table->unsignedBigInteger('user_id');
         });
     }
 

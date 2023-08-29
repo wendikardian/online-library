@@ -19,6 +19,8 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\FlightController;
 
+// import controllert from auth login
+use App\Http\Controllers\Auth\LoginController;
 
 // Route::get('/', function () {
 //     // return view('hello', [
@@ -54,7 +56,6 @@ Route::get('/flight', [FlightController::class, 'index']);
 
 
 // create route to '/' to controller BookController -> index
-Route::get('/', [BookController::class, 'index']);
 
 Route::get('/layout', function () {
     return view('layouts/child');
@@ -90,6 +91,12 @@ Route::get('/community', [CommunityController::class, 'index'])->name('community
 //     ];
 //     return $bookData[$id]['name'];
 // });
+
+// Route::get('/login', [LoginController::class])->name('login');
+Auth::routes();
+Route::get('/', [BookController::class, 'index']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 
@@ -163,6 +170,6 @@ Route::put('/flights/{flight}', [FlightController::class, 'update'])->name('flig
 // Refer to 'destroy' action
 Route::delete('/flights/{flight}', [FlightController::class, 'destroy'])->name('flights.destroy');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// create Route for login

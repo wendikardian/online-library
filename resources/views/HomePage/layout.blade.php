@@ -33,7 +33,7 @@
                     <form class="navbar-form navbar-left" action="{{route('books.index')}}" method="POST">
                         @method('get')
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="search" >
+                            <input type="text" class="form-control" placeholder="Search" name="search">
                             <div class="input-group-btn">
                                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                             </div>
@@ -42,8 +42,40 @@
                     <!-- <button type="submit" class="btn btn-default"></button> -->
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="./login.html">Login</a></li>
-                        <li class="disabled"><a href="#">Signup</a></li>
+
+                        <!-- <li><a href="./login.html">Login</a></li>
+                        <li class="disabled"><a href="#">Signup</a></li> -->
+                        @guest
+                        @if(Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('login')}}">Login</a>
+                        </li>
+                        @endif
+
+                        @if(Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('register')}}">Register</a>
+                        </li>
+                        @endif
+                        @else
+                        <li class="nav-item dropdown">
+                            <a href="" id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{Auth::user()->name}}</a>
+                            <span class="caret"></span>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="{{route('logout')}}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();
+                                ">
+                                        Logout
+                                    </a>
+                                </li>
+                                <form id="logout-form" action="{{route('logout')}}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </ul>
+                        </li>
+                        @endguest
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

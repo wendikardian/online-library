@@ -107,7 +107,7 @@ Route::get('/books/{id}/delete', [BookController::class, 'deleteConfirm'])->name
 // create another action like 'create', 'store', 'show', 'edit', 'update', 'destroy' for BookController
 Route::get('/books/create', [BookController::class, 'create'])->middleware('auth')->name('book.create');
 // to store
-Route::post('/books', [BookController::class, 'store'])->name('book.store')->middleware('auth');
+Route::post('/books', [BookController::class, 'store'])->name('book.store');
 // to show
 Route::get('/books/{id}', [BookController::class, 'show'])->name('book.show');
 // to edit

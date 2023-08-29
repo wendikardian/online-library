@@ -37,8 +37,21 @@
                         </div>
                         <!-- add button to edit and delete -->
                         <div class="text-center">
+                            <!-- <a href="{{route('book.edit', $book['id'])}}" class="btn btn-default mt-10 mb-10" role="button">Edit</a>
+                            <a href="{{route('book_confirm_delete', $book['id'])}}" class="btn btn-default mt-10 mb-10" role="button">Delete</a> -->
+                            <!-- show it only when the user is already loggin, and if the user_id same with id user the button is not disabled -->
+                            @if (Auth::check())
+                            @if (Auth::user()->id == $book['user_id'])
                             <a href="{{route('book.edit', $book['id'])}}" class="btn btn-default mt-10 mb-10" role="button">Edit</a>
                             <a href="{{route('book_confirm_delete', $book['id'])}}" class="btn btn-default mt-10 mb-10" role="button">Delete</a>
+                            @endif
+                            <!-- if the user_id is not same, the button still exist but disabled -->
+                            @if (Auth::user()->id != $book['user_id'])
+                            <a href="" class="btn btn-default mt-10 mb-10" role="button" disabled>Edit</a>
+                            <a href="" class="btn btn-default mt-10 mb-10" role="button" disabled>Delete</a>
+
+                            @endif
+                            @endif
 
                         </div>
 

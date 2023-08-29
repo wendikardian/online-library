@@ -26,7 +26,7 @@ class BookPostRequest extends FormRequest
         return [
             'isbn' => 'required|regex:/^[a-zA-Z0-9 ]+$/',
             'title' => 'required',
-            'author' => 'required',
+            'author_id' => 'required',
             'image_path' => 'required',
             'publisher' => 'required',
             'category' => 'required',
@@ -34,7 +34,8 @@ class BookPostRequest extends FormRequest
             'language' => 'required',
             'publish_date' => 'required',
             'subjects' => 'required',
-            'desc' => 'required'
+            'desc' => 'required',
+            'user_id' => 'required',
         ];
     }
 }

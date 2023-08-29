@@ -13,7 +13,7 @@ class Books extends Model
     protected $fillable = [
         'isbn',
         'title',
-        'author',
+        'author_id',
         'image_path',
         'publisher',
         'category',
@@ -21,7 +21,8 @@ class Books extends Model
         'language',
         'publish_date',
         'subjects',
-        'desc'
+        'desc',
+        'user_id'
     ];
     use HasFactory;
 

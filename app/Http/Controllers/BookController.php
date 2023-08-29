@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // import model Books
 use App\Models\Books;
 use App\Http\Requests\BookPostRequest;
+use Illuminate\Support\Facades\Gate;
 
 class BookController extends Controller
 {
@@ -33,7 +34,9 @@ class BookController extends Controller
     {
         // return index view with bookData response
         // return view('index', ["data" => $this->bookData]);
-        $books = Books::all();
+        // $books = Books::all();
+        // get data with Eager Loading
+        $books = Books::with('author')->get();
 
         // if has search
         if ($request->has('search')) {
@@ -41,7 +44,7 @@ class BookController extends Controller
             $search = $request->search;
             // search by title or author or publisher or category or subjects or desc
             $books = Books::where('title', 'LIKE', '%' . $search . '%')
-                ->orWhere('author', 'LIKE', '%' . $search . '%')
+                // ->orWhere('author', 'LIKE', '%' . $search . '%')
                 ->orWhere('publisher', 'LIKE', '%' . $search . '%')
                 ->orWhere('category', 'LIKE', '%' . $search . '%')
                 ->orWhere('subjects', 'LIKE', '%' . $search . '%')
@@ -64,13 +67,17 @@ class BookController extends Controller
     {
         // return view('detail', ["data" => $this->bookData[$id]]);
         // get books by id
-        $books = Books::find($id);
+        // $books = Books::find($id);
+        // get data books with Eager Loading
+        $books = Books::with('author')->find($id);
         return view('HomePage/detail', ["book" => $books]);
     }
 
     public function create()
     {
-        return view('HomePage/create');
+        // get all author data
+        $authors = \App\Models\Author::all();
+        return view('HomePage/create')->with('authors', $authors);
     }
 
     // public function store(Request $request)
@@ -78,6 +85,7 @@ class BookController extends Controller
     {
         // add data to databases using fillable
         $books = new Books;
+        // dd()
         // filed isbn, title, author, image_path, publisher, category, page, language, publish_date, subjects, desc
         // $books->isbn = $request->isbn;
         // $books->title = $request->title;
@@ -90,7 +98,8 @@ class BookController extends Controller
         // $books->publish_date = $request->publish_date;
         // $books->subjects = $request->subjects;
         // $books->desc = $request->desc;
-
+        // insert data for user_id
+        // $books->user_id = auth()->user()->id;
         $validated = $request->validated();
         // check error validated
         // dd($validated);
@@ -112,13 +121,28 @@ class BookController extends Controller
     {
 
         $books = Books::find($id);
-        return view('HomePage/edit', ["book" => $books]);
+        if (!Gate::allows('update-book', $books)) {
+            abort(403);
+        }
+        // get all author data
+        $authors = \App\Models\Author::all();
+        return view('HomePage/edit', ["book" => $books])->with('authors', $authors);
     }
 
     // create method update
     public function update(BookPostRequest $request, int $id)
     {
-        $books = Books::find($id);
+        // use Gete police for update
+
+
+        // $books = Books::find($id);
+        //add eager loading
+        $books = Books::with('author')->find($id);
+        if (!Gate::allows('update-book', $books)) {
+            abort(403);
+        }
+
+        $this->authorize('update-book', $books);
         // dd([$request, $books]);
         // update books with validation
         $validated = $request->validated();
@@ -138,15 +162,18 @@ class BookController extends Controller
         // $books->save();
         // add some alert if it success
         return redirect()->route('book.show', $id)
-        ->with(
-            'status',
-            'Data successfully updated.'
-        );
+            ->with(
+                'status',
+                'Data successfully updated.'
+            );
     }
 
     public function deleteConfirm(int $id)
     {
         $books = Books::find($id);
+        if (!Gate::allows('delete-book', $books)) {
+            abort(403);
+        }
         return view('HomePage/confirm', ["book" => $books]);
     }
 
@@ -154,6 +181,10 @@ class BookController extends Controller
     public function destroy(int $id)
     {
         $books = Books::find($id);
+        if (!Gate::allows('delete-book', $books)) {
+            abort(403);
+        }
+
         $books->delete();
         return redirect()->route('books.index')->with(
             'status',

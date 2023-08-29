@@ -33,11 +33,13 @@
             </div>
             <div class="form-group">
                 <label for="author">Author</label>
-                <input type="text" maxlength="100" class="form-control" id="author" name="author" placeholder="author" {{
-                    old('author') ? 'value=' . old('author') : ''
-
-                }}>
-                @error('author')
+                <!-- add some authors using select option for data authors value using id -->
+                <select class="form-control" id="author_id" name="author_id">
+                    @foreach ($authors as $author)
+                    <option value="{{$author['id']}}">{{$author['name']}}</option>
+                    @endforeach
+                </select>
+                @error('author_id')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
@@ -119,6 +121,8 @@
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
+            <!-- input type for user_id hidden -->
+            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
             <div class="text-center mb-50">
                 <button type="submit" class="btn btn-default">Submit</button>
             </div>

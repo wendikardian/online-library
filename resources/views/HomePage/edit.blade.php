@@ -35,12 +35,14 @@
             </div>
             <div class="form-group">
                 <label for="author">Author</label>
-                <input type="text" maxlength="100" class="form-control" id="author" name="author" placeholder="Author" {{
-                    old('author') ? 'value=' . old('author') : 'value=' . $book['author']
-                    }}>
-                @error('author')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+                <!-- select input in data authors, if the authors id same with  $book['author']['id'], set as a default -->
+                <select class="form-control" id="author_id" name="author_id">
+                    @foreach ($authors as $author)
+                    <option value="{{$author['id']}}" {{
+                        $author['id'] == $book['author']['id'] ? 'selected' : ''
+                        }}>{{$author['name']}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="image_path">Image Path</label>
@@ -73,7 +75,7 @@
             <div class="form-group">
                 <label for="page">Page</label>
                 <input type="number" class="form-control" id="page" name="page" placeholder="Page" {{
-                    old('page') ? 'value=' . old('author') : 'value=' . $book['author']
+                    old('page') ? 'value=' . old('page') : 'value=' . $book['page']
                     }}>
                 @error('page')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -111,6 +113,8 @@
                 {{ old('desc') ? old('desc') : $book['desc'] }}}
                 </textarea>
             </div>
+            <!-- input type hidden for user_id -->
+            <input type="hidden" name="user_id" value="{{$book['user_id']}}">
             <div class="text-center mb-50">
                 <button type="submit" class="btn btn-default">Submit</button>
             </div>

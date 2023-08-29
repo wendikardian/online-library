@@ -93,7 +93,8 @@ Route::get('/community', [CommunityController::class, 'index'])->name('community
 // });
 
 // Route::get('/login', [LoginController::class])->name('login');
-Auth::routes();
+
+
 Route::get('/', [BookController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -101,20 +102,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 
 // Route::get('/books/detail/{id}', [BookController::class, 'detail'])->name('detail-book');
-Route::get('/books/{id}/delete', [BookController::class, 'deleteConfirm'])->name('book_confirm_delete');
+Route::get('/books/{id}/delete', [BookController::class, 'deleteConfirm'])->name('book_confirm_delete')->middleware('auth');
 
 // create another action like 'create', 'store', 'show', 'edit', 'update', 'destroy' for BookController
-Route::get('/books/create', [BookController::class, 'create'])->name('book.create');
+Route::get('/books/create', [BookController::class, 'create'])->middleware('auth')->name('book.create');
 // to store
-Route::post('/books', [BookController::class, 'store'])->name('book.store');
+Route::post('/books', [BookController::class, 'store'])->name('book.store')->middleware('auth');
 // to show
 Route::get('/books/{id}', [BookController::class, 'show'])->name('book.show');
 // to edit
-Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
+Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('book.edit')->middleware('auth');
 // to update
-Route::put('/books/{id}', [BookController::class, 'update'])->name('book.update');
+Route::put('/books/{id}', [BookController::class, 'update'])->name('book.update')->middleware('auth');
 // to destroy
-Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('book.destroy')->middleware('auth');
 // add route to book_delete_confirm
 
 
@@ -171,5 +172,5 @@ Route::put('/flights/{flight}', [FlightController::class, 'update'])->name('flig
 Route::delete('/flights/{flight}', [FlightController::class, 'destroy'])->name('flights.destroy');
 
 
-
+Auth::routes();
 // create Route for login

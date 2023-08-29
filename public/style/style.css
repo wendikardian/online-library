@@ -11,3 +11,8 @@
 .thumbnail{
     height: 570px;
 }
+
+.space-evenly{
+    display: flex;
+    justify-content: flex-end;
+}

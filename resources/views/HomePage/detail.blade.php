@@ -23,7 +23,7 @@
                     <div class="col-sm-6 col-md-8">
 
                         <h2><b>{{$book['title']}}</b></h2>
-                        <p><small>by</small> <a href="#" class="h-link"> {{$book['author']}} </a></p>
+                        <p><small>by</small> <a href="#" class="h-link"> {{$book['author']['name']}} </a></p>
                         <div class="pt-20">
                             <p>Publisher <a href="#" class="h-link">{{$book['publisher']}}</a></p>
                             <p>Category <a href="#" class="h-link">{{$book['category']}}</a></p>

@@ -19,7 +19,7 @@
             <img src="{{$book['image_path']}}" alt="..." width="250px" height="200">
             <div class="caption">
                 <h3>{{$book['title']}}</h3>
-                <p>By : {{$book['author']}}</p>
+                <p>By : {{$book['author']['name']}}</p>
                 <!-- limit desc only max 50 words -->
                 <p>{{Str::limit($book['desc'], 250)}}</p>
                 <!-- change the href into detail-book route and send the id of the book  -->

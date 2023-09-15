@@ -35,8 +35,9 @@ class BookController extends Controller
         // return index view with bookData response
         // return view('index', ["data" => $this->bookData]);
         // $books = Books::all();
+        $books = Books::all();
         // get data with Eager Loading
-        $books = Books::with('author')->get();
+        // $books = Books::with('author')->get();
 
         // if has search
         if ($request->has('search')) {

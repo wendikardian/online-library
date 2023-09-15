@@ -15,6 +15,6 @@ class Author extends Model
     // add method to make relation with Books has many
     public function member(): HasMany
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(asdasd::class);
     }
 }

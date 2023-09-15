@@ -35,7 +35,7 @@
 
 @section('pagination')
 
-<!-- add some custome pagination style -->
+<!-- add some custom pagination style -->
 <div class="text-center">
     <nav aria-label="Page navigation">
         <ul class="pagination">

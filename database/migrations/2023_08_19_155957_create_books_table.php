@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('category', 50);
             $table->bigInteger('page');
             $table->string('language', 20);
-            $table->timestamp('publish_date');
+            $table->timestamp('publish_date')->nullable();
             $table->string('subjects', 50);
             $table->text('desc');
             // add user_id

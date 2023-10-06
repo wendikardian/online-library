@@ -16,7 +16,6 @@
                 <label for="isbn">ISBN</label>
                 <input type="text" class="form-control" id="isbn" name="isbn" placeholder="ISBN" {{
                     old('isbn') ? 'value=' . old('isbn') :'value=' . $book['isbn']
-
                 }}>
                 @error('isbn')
                 <div class="alert alert-danger">{{ $message }}</div>

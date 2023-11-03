@@ -38,7 +38,7 @@
 <!-- add some custom pagination style -->
 <div class="text-center">
     <nav aria-label="Page navigation">
-        <ul class="pagination">
+        <ul class="pagination
             <li>
                 <a href="{{$bookData->previousPageUrl()}}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
